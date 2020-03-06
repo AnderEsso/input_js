@@ -19,13 +19,13 @@
         </label>
       </p>
       <p class="wrap">
-        <input type="button" onclick="createNewChildItem()" value="Додати">
+        <input type="button" onclick="createTask()" value="Додати">
       </p>
     </form>
     <ul id='list' class="list"></ul>
   </section>
   <script>
-    function createNewChildItem(){
+    function createTask(){
       var inputText = mainForm.elements[0];
       var inputVal = mainForm.elements[0].value;
       var inputClass = mainForm.elements[0].classList;
@@ -39,16 +39,17 @@
         inputText.setAttribute('placeholder', 'Введіть текст');
         inputClass.remove('has-error');
         mainForm.classList.remove('has-error');
-        var li = document.createElement("li");
+        var taskSelector = document.createElement("li");
         var textnode = document.createTextNode(inputVal);
-        li.appendChild(textnode);
-        document.getElementById("list").appendChild(li);
+        taskSelector.appendChild(textnode);
+        document.getElementById("list").appendChild(taskSelector);
         var check = document.createElement('input');
         check.type = 'checkbox';
+        //Видалення taskSelector при кліку на іконку
         var iconDelate = document.createElement('i');
         iconDelate.classList.add("fa", "fa-trash-o");
-        li.appendChild(check);
-        li.appendChild(iconDelate);
+        taskSelector.appendChild(check);
+        taskSelector.appendChild(iconDelate);
         inputVal = "";
         mainForm.elements[0].value="";
         var icon = document.getElementsByTagName('i');
