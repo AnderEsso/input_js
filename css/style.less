@@ -5,366 +5,54 @@
 img{
 	max-width: 100%;
 }
-
-/////////nav////////////////
-.nav-wrapper{
-	width: 100%;
-	padding-top: 30px;
-	padding-left: 20px;
-	padding-right: 20px;
+.sect-main{
+	width: 1200px;
 	margin: 0 auto;
-	.d-flex;
-	align-items: baseline;
-	justify-content: center;
+	padding: 15px;
+	background-color: #3f60c61a;
 }
-.menu{
-	display: none;
-	.active{
-		color: #111111;
-		font-family: "Avenir - Heavy";
-		font-weight: 400;
-		letter-spacing: 0.3px;
-		font-family: "Avenir - Heavy";
-		font-weight: 400;
-		letter-spacing: 0.3px;
-	}
-}
-.menu__link{
-	text-decoration: none;
-	color: #aaaaaa;
-	font-family: Avenir;
-	font-size: 15px;
-	font-weight: 500;
-	text-transform: uppercase;
-	margin-left: 60px;
-	transition: all 0.6s ease-out;
-	&:hover{
-		color: black;
-	}
-}
-
-
-
-
-//////header///////
-.header-wrapper{
-	width: 100%;
-	padding-left: 20px;
-	padding-right: 20px;
-	padding-top: 221px;
+.mainForm{	
+	background-color: #fff;
+	width: 60%;
 	margin: 0 auto;
-	margin-bottom: 233px;
-}
-.title{
+	border: 2px solid #fff;
 	text-align: center;
-	margin-bottom: 212px;
 }
-.title__item{
-	color: #000000;
-	font-family: "Playfair Display";
-	font-size: 70px;
-	font-weight: 400;
-	line-height: 100px;
-	letter-spacing: 0.57px;
-	margin-bottom: 28px;
-}
-
-.title__subitem{
-	width: 40.56%;
-	margin: 0 auto;
-	color: #999999;
-	font-family: "Avenir - Roman";
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 30px;
-	letter-spacing: 0.06px;
-}
-.header__content{
-	.d-flex;
-	justify-content: space-between;
-	align-items: flex-end;
-}
-.reviews{
-	width: 19%;
-}
-.reviews div:first-of-type{
-	margin-bottom: 35px;	
-}
-.recent{
-	padding-bottom: 20px;
-	border-bottom: 1px solid #e7e7e7e7;
-}
-.recent:first-of-type{
-	margin-bottom: 	22px;
-}
-
-.recent__title{	
-	color: #000000;
-	font-family: "Playfair Display";
-	font-size: 36px;
-	font-weight: 400;
-	letter-spacing: 0.29px;
-	margin-bottom: 40px;	
-}
-.recent__content{
-	position: relative;
-	color: #999999;
-	font-family: "Avenir - Book Oblique";
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 31px;
-	margin-bottom: 17px;
-	z-index: 10;
-	&::before{
-		content: "";
-		position: absolute;
-		z-index: -10;
-		top: 8px;
-		left: -17px;
-		display: inline-block;
-		width: 36px;
-		height: 29px;
-		background-image: url(../images/_quotes.png);
-		background-size: cover;
+.wrap{
+	padding: 10px 15px;
+	label{
+		font-style: 24px;
+		margin-bottom: 40px;
 	}
 }
-.recent__name{
-	color: #000000;
-	font-family: "Avenir - Heavy";
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 31px;
-}
-.videoBig{
-	width:  48%;
-	div{
-		position: relative;
-		&:after{
-			content: "►";
-			.d-flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 17px;
-			width: 56px;
-			height: 56px;
-			border-radius: 100%;
-			background-color: white;
-			background-image: url(../images/playvideo.png);
-			position: absolute;
-			bottom: 7%;
-			left: 3%;
-			background-repeat: no-repeat;
+.list{
+	width: 60%;
+	margin: 0 auto;
+	li{		
+		width: 100%;
+		padding: 15px;
+		font-size: 20px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid #4455;
+		input[type="checkbox"]{
+			margin-left: 10px;
+			margin-right: 10px;
+			cursor: pointer;
+		}
+		i{
+			font-size: 20px;
+			color: #eb6e6c;
 			cursor: pointer;
 		}
 	}
 }
-.videoList{
-	width: 19%;
+.has-error{
+	border: 2px solid #eb6e6c;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
 }
-.videoList__title{
-	color: #000000;
-	font-family: "Playfair Display";
-	font-size: 36px;
-	font-weight: 400;
-	letter-spacing: 0.29px;
-	margin-bottom: 34px;	
-}
-.videoList div:nth-child(2){
-	margin-bottom: 36px;
-}
-.videoSmoll {
-	position: relative;
-
-	&:after{
-		content: "►";
-		.d-flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 17px;
-		width: 56px;
-		height: 56px;
-		border-radius: 100%;
-		background-color: white;
-		background-image: url(../images/playvideo.png);
-		position: absolute;
-		bottom: -4%;
-		left: -4%;
-		background-repeat: no-repeat;
-		cursor: pointer;
-	}
+input{
+	padding: 10px;
+	border: 2px solid #8373ff;
 }
 
-
-
-//////////container///////////
-.conteiner{
-	max-width: 1093px;
-	padding-right: 20px;
-	padding-left: 20px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 146px;
-}
-.content__title{
-	text-align: center;	
-	color: #000000;
-	font-family: "Playfair Display";
-	font-size: 50px;
-	font-weight: 400;
-	letter-spacing: 0.41px;
-	margin-bottom: 91px;
-}
-.instractors{
-	.d-flex;
-	justify-content: space-between;
-	align-items: center;
-	text-align: center;
-	margin-bottom: 259px;
-}
-.block-item{
-	width: 27.64%;
-	.d-flex;
-	flex-direction: column;
-	align-items: center;
-}
-.item__image{
-	margin-bottom: 38px;
-}
-.item__title{
-	color: #000000;
-	font-family: "Playfair Display";
-	font-size: 30px;
-	font-weight: 400;
-	letter-spacing: 0.28px;
-	margin-bottom: 19px;
-}
-.item__subtitle{
-	color: #2ab738;
-	font-family: Avenir;
-	font-size: 15px;
-	font-weight: 500;
-	letter-spacing: 0.14px;
-}
-
-/////////blog//////////
-.blogs{
-	.d-flex;
-	justify-content: space-between;
-	margin-bottom: 190px;
-}
-.flex-reverce{
-	flex-direction: row-reverse;
-}
-.flex-reverce .blog{
-	padding: 51px 81px 63px  0px;
-}
-.blog__image{
-	width: 49.67%;
-}
-.blog{
-	width: 49.67%;
-	padding: 51px 0 63px 81px;
-}
-.blog__title{
-	color: #000000;
-	font-family: "Playfair Display";
-	font-size: 40px;
-	font-style: italic;
-	letter-spacing: 0.33px;
-	margin-bottom: 31px;	
-}
-.blog__description{
-	color: #444444;
-	font-family: "Avenir-Roman";
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 31px;
-	letter-spacing: 0.06px;
-	margin-bottom: 75px;
-}
-.blog__button{
-	.d-flex;	
-	align-items: center;
-	justify-content: center;
-	text-decoration: none;	
-	width: 141px;
-	height: 52px;
-	border: 1px solid #e5e5e5;
-	color: #000000;
-	font-family: "Avenir - Heavy";
-	font-size: 16px;
-	font-weight: 400;
-	letter-spacing: 0.06px;
-	transition: all 0.6s ease-out;
-	&:hover{
-		background-color: #9fe4ea;
-		border: 1px solid black;
-	}
-}
-
-/////////////////button///////////
-.button{
-	text-decoration: none;
-	.d-flex;
-	align-items: center;	
-	justify-content: center;	
-	width: 180px;
-	height: 56px;
-	border: 1px solid #41475b;
-	color: #000000;
-	font-family: Avenir;
-	font-size: 18px;
-	font-weight: 500;
-	margin-left: auto;	
-	margin-right: auto;
-	transition: all 0.6s ease-out;
-	&:hover{
-		background-color: #9fe4ea;
-	}
-}
-
-/////////////footer///////////////
-.footer{
-	padding-top: 	48px;
-	padding-bottom: 38px;	
-	border-top: 1px solid #f2ede7;
-}
-.footer-wrapper{
-	max-width: 1186px;
-	padding-left: 20px;	
-	padding-right: 20px;	
-	margin: 0 auto;
-
-	.d-flex;
-	justify-content: space-between;	
-	align-items: flex-end;
-}
-.copyright__title{
-	color: #000000;
-	font-family: "Playfair Display";
-	font-size: 24px;
-	font-weight: 400;
-	line-height: 19.09px;
-	margin-bottom: 15px;	
-}
-.copyright__subtitle{
-	color: #9f9f9f;
-	font-family: "Avenir - Roman";
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 28px;
-}
-.designer__name{
-	color: #9f9f9f;
-	font-family: "Avenir - Roman";
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 36px;
-	span{
-		font-family: Avenir;
-		font-weight: 400;
-		color: #000000;
-		font-family: Avenir;
-		font-weight: 500;
-	}
-}

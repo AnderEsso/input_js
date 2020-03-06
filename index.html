@@ -1,188 +1,64 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/media.css">
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="libs/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/media.css">
+
 </head>
 <body>
+  <section class="sect-main">
+    <form name="mainForm" class="mainForm">
+      <p class="wrap">
+        <label for="textInput"> Введіть бажанний текст в поле:<br>
+          <input id='inputText'  type="text" name="textInput"  placeholder="Введіть текст" value="">
 
-	<!-- NAVIGATION -->
+        </label>
+      </p>
+      <p class="wrap">
+        <input type="button" onclick="createNewChildItem()" value="Додати">
+      </p>
+    </form>
+    <ul id='list' class="list"></ul>
+  </section>
+  <script>
+    function createNewChildItem(){
+      var inputText = mainForm.elements[0];
+      var inputVal = mainForm.elements[0].value;
+      var inputClass = mainForm.elements[0].classList;
 
-	<div class="nav-wrapper">
-		<div class="logo">
-			<img src="images/logo.png" alt="logo">
-		</div>
-
-		<div class="menu">
-			<a href="#" class="menu__link active">Home</a>
-			
-			<a href="#" class="menu__link">About</a>
-			
-			<a href="#" class="menu__link">Blog</a>
-			
-			<a href="#" class="menu__link">Contact</a>
-		</div>
-	</div>
-
-	<!-- HEADER -->
-
-	<header class="header-wrapper">
-		<div class="title">
-			<h1 class="title__item">
-				Long Beach Surfing Institute
-			</h1>
-			<p class="title__subitem">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-			</p>
-		</div>
-		<div class="header__content">
-			<div class="reviews">	
-				<div class="recent">
-					<p class="recent__title">
-						Recent Reviews
-					</p>
-					<p class="recent__content">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed incididunt ut labore et dolore magn.
-					</p>
-					<p class="recent__name">
-						-  Steve Woz
-					</p>					
-				</div>
-				<div class="recent">
-					<p class="recent__content">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed incididunt ut labore et dolore magn.
-					</p>
-					<p class="recent__name">
-						-  Steve Woz
-					</p>					
-				</div>
-			</div>
-			<div class="videoBig">
-				<div><img src="images/videobig.png" alt="videoBig">
-				</div>
-			</div>
-			<div class="videoList">
-				<div class="videoList__title">
-					User Videos
-				</div>
-				<div class="videoSmoll">
-					<img src="images/videolittleup.png" alt="videoSmoll">
-				</div>
-				<div class="videoSmoll">
-					<img src="images/videolittledown.png" alt="videoSmoll">
-				</div>
-			</div>
-
-		</div>
-	</header>
-
-
-<!-- CONTENT__PAGE -->
-
-	<section class="conteiner">
-		<h2 class="content__title">
-			Popular Instractors
-		</h2>
-		<div class="instractors">
-			<div class="block-item">
-				<div class="item__image">	
-					<img src="images/instOne.png" alt="instractors">
-				</div>
-				<div class="item__title">	
-					Simon Adward
-				</div>
-				<div class="item__subtitle">	
-					5,000 students
-				</div>
-			</div>
-
-			<div class="block-item">
-				<div class="item__image">	
-					<img src="images/instTwo.png" alt="instractors">
-				</div>
-				<div class="item__title">	
-					Elliana D’Soza
-				</div>
-				<div class="item__subtitle">	
-					4,350 students
-				</div>
-			</div>
-			<div class="block-item">
-				<div class="item__image">	
-					<img src="images/instThree.png" alt="instractors">
-				</div>
-				<div class="item__title">	
-					Joseph Bardon
-				</div>
-				<div class="item__subtitle">	
-					3,248 students
-				</div>
-			</div>
-		</div>
-		<h2 class="content__title">
-			Recent Blogs by User
-		</h2>
-		<div class="blogs">
-			<div class="blog__image">	
-				<img src="images/blogup.png" alt="blogUsers">
-			</div>
-			<div class="blog">
-				<h3 class="blog__title">
-					Lipsum cound be headline
-				</h3>
-				<p class="blog__description">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-				</p>
-				<a href="#" class="blog__button">
-					Read More
-				</a>
-			</div>
-		</div>
-		<div class="blogs flex-reverce">
-			<div class="blog__image">	
-						<img src="images/bloqdown.png" alt="blogUsers">
-			</div>
-			<div class="blog">
-				<h3 class="blog__title">
-					Lipsum cound be headline
-				</h3>
-				<p class="blog__description">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-				</p>
-				<a href="#" class="blog__button">
-					Read More
-				</a>
-			</div>
-
-		</div>
-		<h2 class="content__title">
-			Aren’t you intrested Yet!!
-		</h2>
-		<a href="#" class="button">
-				Enroll Now
-		</a>
-	</section>
-
-	<!-- FOOTER -->
-
-	<footer class="footer">
-		<div class="footer-wrapper">	
-				<div class="copyright">	
-						<p class="copyright__title">Beach Surfing</p>
-						<p class="copyright__subtitle">Copyright © 2018 All Rights Reserved.</p>
-				</div>
-				<div class="designer">
-					<p class="designer__name">Designed by<span> Rikon Rahman</span></p>
-
-				</div>
-		</div>
-
-	</footer>
-
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>	
-	<script src="js/main.js"></script>
+      if(inputVal==''){
+        inputClass.add('has-error');
+        mainForm.classList.add('has-error');
+        inputText.setAttribute('placeholder', 'Error! Тут має бути текст');
+      }
+      else{
+        inputText.setAttribute('placeholder', 'Введіть текст');
+        inputClass.remove('has-error');
+        mainForm.classList.remove('has-error');
+        var li = document.createElement("li");
+        var textnode = document.createTextNode(inputVal);
+        li.appendChild(textnode);
+        document.getElementById("list").appendChild(li);
+        var check = document.createElement('input');
+        check.type = 'checkbox';
+        var iconDelate = document.createElement('i');
+        iconDelate.classList.add("fa", "fa-trash-o");
+        li.appendChild(check);
+        li.appendChild(iconDelate);
+        inputVal = "";
+        mainForm.elements[0].value="";
+        var icon = document.getElementsByTagName('i');
+        for (var i = 0; i < icon.length; i++) {
+        icon[i].addEventListener('click', function(){
+          this.parentNode.parentNode.removeChild(this.parentNode);
+        });
+      }
+      }
+    }
+  </script>
 </body>
 </html>
