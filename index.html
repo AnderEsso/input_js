@@ -15,7 +15,6 @@
       <p class="wrap">
         <label for="textInput"> Введіть бажанний текст в поле:<br>
           <input id='inputText'  type="text" name="textInput"  placeholder="Введіть текст" value="">
-
         </label>
       </p>
       <p class="wrap">
@@ -24,11 +23,29 @@
     </form>
     <ul id='list' class="list"></ul>
   </section>
+
+
   <script>
+
+    var tasksArray = JSON.parse(localStorage.getItem('tasks'));
+     // localStorage.removeItem('tasks'); //видалення даних з local
+    if(tasksArray) {
+      tasksArray.forEach((item, index) => {
+        renderTask(item.text, item.isDone, index);
+      });
+    } else {
+      tasksArray = [];
+    }
+
     function createTask(){
+      let array = localStorage.getItem('tasks');
+
       var inputText = mainForm.elements[0];
       var inputVal = mainForm.elements[0].value;
       var inputClass = mainForm.elements[0].classList;
+      var list = document.getElementById('list');
+      var itemIndex = parseInt(list.lastElementChild.dataset.index) + 1;
+
 
       if(inputVal==''){
         inputClass.add('has-error');
@@ -39,27 +56,96 @@
         inputText.setAttribute('placeholder', 'Введіть текст');
         inputClass.remove('has-error');
         mainForm.classList.remove('has-error');
-        var taskSelector = document.createElement("li");
-        var textnode = document.createTextNode(inputVal);
-        taskSelector.appendChild(textnode);
-        document.getElementById("list").appendChild(taskSelector);
-        var check = document.createElement('input');
-        check.type = 'checkbox';
+
+
+        tasksArray.push({
+          text: inputVal,
+          isDone: false
+        });
+
+        localStorage.setItem('tasks', JSON.stringify(tasksArray));
+
+        renderTask(inputVal, false, itemIndex );
         //Видалення taskSelector при кліку на іконку
-        var iconDelate = document.createElement('i');
-        iconDelate.classList.add("fa", "fa-trash-o");
-        taskSelector.appendChild(check);
-        taskSelector.appendChild(iconDelate);
+
         inputVal = "";
         mainForm.elements[0].value="";
         var icon = document.getElementsByTagName('i');
         for (var i = 0; i < icon.length; i++) {
-        icon[i].addEventListener('click', function(){
-          this.parentNode.parentNode.removeChild(this.parentNode);
-        });
-      }
+          icon[i].addEventListener('click', function(){
+            this.parentNode.parentNode.removeChild(this.parentNode);
+          });
+        }
       }
     }
+
+    function renderTask(text, status, index) {
+      let tasksList = document.getElementById("list");
+      let taskSelector = document.createElement("li");
+      let textNode = document.createTextNode(text);
+      let checkbox = document.createElement('input');
+      let deleteIcon = document.createElement('i');
+
+      taskSelector.dataset.index = index;
+
+
+
+      checkbox.type = 'checkbox';
+      checkbox.checked = status;
+
+      deleteIcon.classList.add("fa", "fa-trash-o");
+
+      tasksList.appendChild(taskSelector);
+      taskSelector.appendChild(textNode);
+      taskSelector.appendChild(checkbox);
+      taskSelector.appendChild(deleteIcon);
+
+
+
+      checkbox.addEventListener( 'change', function(event) {
+        changeStatus(this.parentNode.dataset.index, this.checked);
+      });
+    }
+
+
+    var inputs = document.querySelectorAll( "input[type='checkbox']" );
+
+    for ( var i = 0; i < inputs.length; i++ ) {
+      inputs[i].addEventListener( 'change', function(event) {
+
+        changeStatus(this.parentNode.dataset.index, this.checked);
+
+      });
+    }
+
+    function changeStatus(index, status){
+
+      var array = JSON.parse(localStorage.getItem('tasks'));  
+
+      let newArray = array.map(function (item, indexArr) {
+
+
+        if (indexArr == index) {
+          return {
+            text: item.text,
+            isDone: status
+
+          }
+        } else {
+          return item;
+        }
+        
+      });
+      console.log('newArray: '+newArray);
+      localStorage.setItem('tasks', JSON.stringify(newArray));
+    }
+
+    // function deleteItem(index){
+      
+    // }
+
+    
+
   </script>
 </body>
 </html>
