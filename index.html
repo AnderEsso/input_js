@@ -29,7 +29,9 @@
 
     var tasksArray = JSON.parse(localStorage.getItem('tasks'));
      // localStorage.removeItem('tasks'); //видалення даних з local
-    if(tasksArray) {
+
+      console.log(tasksArray);
+     if(tasksArray) {
       tasksArray.forEach((item, index) => {
         renderTask(item.text, item.isDone, index);
       });
@@ -43,8 +45,18 @@
       var inputText = mainForm.elements[0];
       var inputVal = mainForm.elements[0].value;
       var inputClass = mainForm.elements[0].classList;
+
       var list = document.getElementById('list');
-      var itemIndex = parseInt(list.lastElementChild.dataset.index) + 1;
+      var itemIndex;
+      console.log(list.lastElementChild);
+      if (list.lastElementChild == null){
+           itemIndex = 0;
+
+      } else {
+
+       itemIndex = parseInt(list.lastElementChild.dataset.index) + 1;
+
+      }
 
 
       if(inputVal==''){
@@ -70,12 +82,7 @@
 
         inputVal = "";
         mainForm.elements[0].value="";
-        var icon = document.getElementsByTagName('i');
-        for (var i = 0; i < icon.length; i++) {
-          icon[i].addEventListener('click', function(){
-            this.parentNode.parentNode.removeChild(this.parentNode);
-          });
-        }
+
       }
     }
 
@@ -85,6 +92,7 @@
       let textNode = document.createTextNode(text);
       let checkbox = document.createElement('input');
       let deleteIcon = document.createElement('i');
+      let icon = document.getElementsByTagName('i');
 
       taskSelector.dataset.index = index;
 
@@ -105,24 +113,24 @@
       checkbox.addEventListener( 'change', function(event) {
         changeStatus(this.parentNode.dataset.index, this.checked);
       });
+
+     
+        deleteIcon.addEventListener('click', function(){
+
+          deleteItem(index);
+
+          this.parentNode.parentNode.removeChild(this.parentNode);
+
+        });
+      
     }
-
-
-    var inputs = document.querySelectorAll( "input[type='checkbox']" );
-
-    for ( var i = 0; i < inputs.length; i++ ) {
-      inputs[i].addEventListener( 'change', function(event) {
-
-        changeStatus(this.parentNode.dataset.index, this.checked);
-
-      });
-    }
+   
 
     function changeStatus(index, status){
 
       var array = JSON.parse(localStorage.getItem('tasks'));  
 
-      let newArray = array.map(function (item, indexArr) {
+      let newArray  = array.map(function (item, indexArr) {
 
 
         if (indexArr == index) {
@@ -140,9 +148,13 @@
       localStorage.setItem('tasks', JSON.stringify(newArray));
     }
 
-    // function deleteItem(index){
-      
-    // }
+    function deleteItem(index){
+      var array = JSON.parse(localStorage.getItem('tasks'));
+       array.splice(index, 1);
+
+      localStorage.setItem('tasks', JSON.stringify(array));
+ 
+    }
 
     
 
