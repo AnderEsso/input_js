@@ -3,8 +3,8 @@ var tasksArray = JSON.parse(localStorage.getItem('tasks'));
 
 console.log(tasksArray);
 if (tasksArray) {
-  tasksArray.forEach((item) => {
-    renderTask(item.text, item.isDone, item.indexTask);
+  tasksArray.forEach((item, index) => {
+    renderTask(item.text, item.isDone, index);
   });
 } else {
   tasksArray = [];
@@ -12,8 +12,7 @@ if (tasksArray) {
 
 ///////////ДОДАВАННЯ ЗАВДАНЬ В РОЗМІТКУ///////////////
 function createTask() {
-  var array = JSON.parse(localStorage.getItem('tasks'));
-
+  let array = localStorage.getItem('tasks');
 
   var inputText = mainForm.elements[0];
   var inputVal = mainForm.elements[0].value;
@@ -29,7 +28,9 @@ function createTask() {
 
   } else {
 
-    itemIndex = array.length;
+    let lastElement = parseInt(list.lastElementChild.dataset.index) + 1;
+
+    itemIndex = array[lastElement].indexTask;
   }
 
   if (inputVal == '') {
@@ -47,7 +48,6 @@ function createTask() {
       isDone: false,
       indexTask: itemIndex
     });
-
 
     localStorage.setItem('tasks', JSON.stringify(tasksArray));
 
@@ -106,8 +106,6 @@ function renderTask(text, status, index) {
     this.parentNode.parentNode.removeChild(this.parentNode);
   });
 
-  console.log(tasksArray);
-
 }
 let addButton = document.getElementById('addButton');
 
@@ -120,18 +118,10 @@ function changeStatus(index, status) {
 
   var array = JSON.parse(localStorage.getItem('tasks'));
 
-  var elementArray = array.findIndex(function (el) {
-    return el.indexTask == index;
-  });
-  console.log(index, elementArray);
-  console.log(array);
-
-
   let newArray = array.map(function (item, indexArr) {
 
 
-    if (indexArr === elementArray) {
-
+    if (indexArr == index) {
       return {
         text: item.text,
         isDone: status
@@ -141,7 +131,8 @@ function changeStatus(index, status) {
       return item;
     }
 
-  })
+  });
+  console.log('newArray: ' + newArray);
   localStorage.setItem('tasks', JSON.stringify(newArray));
 }
 
