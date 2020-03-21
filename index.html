@@ -1,173 +1,29 @@
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-  <link rel="stylesheet" href="./libs/font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/media.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="./src/libs/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./build/css/style.css">
 </head>
+
 <body>
   <section class="sect-main">
     <form name="mainForm" class="mainForm">
       <p class="wrap">
         <label for="textInput"> Введіть бажанний текст в поле:<br>
-          <input id='inputText'  type="text" name="textInput"  placeholder="Введіть текст" value="">
+          <input id='inputText' type="text" name="textInput" placeholder="Введіть текст" value="">
         </label>
       </p>
       <p class="wrap">
-        <input type="button" onclick="createTask()" value="Додати">
+        <input type="button" id="addButton" value="Додати">
       </p>
     </form>
     <ul id='list' class="list"></ul>
   </section>
-
-
-  <script>
-
-    var tasksArray = JSON.parse(localStorage.getItem('tasks'));
-     // localStorage.removeItem('tasks'); //видалення даних з local
-
-      console.log(tasksArray);
-     if(tasksArray) {
-      tasksArray.forEach((item, index) => {
-        renderTask(item.text, item.isDone, index);
-      });
-    } else {
-      tasksArray = [];
-    }
-
-    function createTask(){
-      let array = localStorage.getItem('tasks');
-
-      var inputText = mainForm.elements[0];
-      var inputVal = mainForm.elements[0].value;
-      var inputClass = mainForm.elements[0].classList;
-
-      var list = document.getElementById('list');
-      var itemIndex;
-      console.log(list.lastElementChild);
-      if (list.lastElementChild == null){
-           itemIndex = 0;
-
-      } else {
-
-       itemIndex = parseInt(list.lastElementChild.dataset.index) + 1;
-
-      }
-
-
-      if(inputVal==''){
-        inputClass.add('has-error');
-        mainForm.classList.add('has-error');
-        inputText.setAttribute('placeholder', 'Error! Тут має бути текст');
-      }
-      else{
-        inputText.setAttribute('placeholder', 'Введіть текст');
-        inputClass.remove('has-error');
-        mainForm.classList.remove('has-error');
-
-
-
-
-        tasksArray.push({
-          text: inputVal,
-          isDone: false
-        });
-
-        localStorage.setItem('tasks', JSON.stringify(tasksArray));
-
-        renderTask(inputVal, false, itemIndex );
-       
-
-        inputVal = "";
-        mainForm.elements[0].value="";
-
-      }
-    }
-    mainForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        createTask();
-    });
-
-    mainForm.elements[0].addEventListener('keydown', function(){
-       mainForm.elements[0].setAttribute('placeholder', 'Введіть текст');
-      mainForm.elements[0].classList.remove('has-error');
-        mainForm.classList.remove('has-error');
-    });
-
-
-    function renderTask(text, status, index) {
-      let tasksList = document.getElementById("list");
-      let taskSelector = document.createElement("li");
-      let textNode = document.createTextNode(text);
-      let checkbox = document.createElement('input');
-      let deleteIcon = document.createElement('i');
-      let icon = document.getElementsByTagName('i');
-
-      taskSelector.dataset.index = index;
-
-
-
-      checkbox.type = 'checkbox';
-      checkbox.checked = status;
-
-      deleteIcon.classList.add("fa", "fa-trash-o");
-
-      tasksList.appendChild(taskSelector);
-      taskSelector.appendChild(textNode);
-      taskSelector.appendChild(checkbox);
-      taskSelector.appendChild(deleteIcon);
-
-
-
-      checkbox.addEventListener( 'change', function(event) {
-        changeStatus(this.parentNode.dataset.index, this.checked);
-      });
-
-      //Видалення taskSelector при кліку на іконку
-        deleteIcon.addEventListener('click', function(){
-          deleteItem(index);
-           this.parentNode.parentNode.removeChild(this.parentNode);
-        });
-      
-    }
-   
-
-    function changeStatus(index, status){
-
-      var array = JSON.parse(localStorage.getItem('tasks'));  
-
-      let newArray  = array.map(function (item, indexArr) {
-
-
-        if (indexArr == index) {
-          return {
-            text: item.text,
-            isDone: status
-
-          }
-        } else {
-          return item;
-        }
-        
-      });
-      console.log('newArray: '+newArray);
-      localStorage.setItem('tasks', JSON.stringify(newArray));
-    }
-
-    function deleteItem(index){
-      var array = JSON.parse(localStorage.getItem('tasks'));
-       array.splice(index, 1);
-
-      localStorage.setItem('tasks', JSON.stringify(array));
- 
-    }
-
-    
-
-  </script>
+  <script src="./build/js/script.js"></script>
 </body>
+
 </html>
