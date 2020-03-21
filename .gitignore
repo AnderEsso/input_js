@@ -1,7 +1,2 @@
 node_modules/
-src/
-!src/libs
-gulpfile.js
-package.json
-package-lock.json
 .vscode/
