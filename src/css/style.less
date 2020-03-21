@@ -2,6 +2,10 @@
 @import 'variables.less';
 @import 'mixins.less';
 
+body{
+	font-family: 'Roboto', sans-serif;
+}
+
 img{
 	max-width: 100%;
 }
@@ -21,8 +25,11 @@ img{
 .wrap{
 	padding: 10px 15px;
 	label{
+		display: block;
 		font-style: 24px;
-		margin-bottom: 40px;
+		padding: 15px;
+		background-color: #0494de8c;
+		margin-bottom: 10px;
 	}
 }
 .list{
@@ -34,6 +41,7 @@ img{
 		font-size: 20px;
 		margin-bottom: 10px;
 		border-bottom: 1px solid #4455;
+		background-color: #8373ff33;
 		input[type="checkbox"]{
 			margin-left: 10px;
 			margin-right: 10px;
@@ -54,5 +62,11 @@ img{
 input{
 	padding: 10px;
 	border: 2px solid #8373ff;
+}
+#inputText{
+	width: 80%;
+}
+#addButton{
+	width: 50%;
 }
 
