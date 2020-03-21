@@ -32,9 +32,9 @@ function createTask() {
   if (inputVal == '') {
     inputClass.add('has-error');
     mainForm.classList.add('has-error');
-    inputText.setAttribute('placeholder', 'Error! Тут має бути текст');
+    inputText.setAttribute('placeholder', 'Error! Please specify the task');
   } else {
-    inputText.setAttribute('placeholder', 'Введіть текст');
+    inputText.setAttribute('placeholder', 'Enter the task');
     inputClass.remove('has-error');
     mainForm.classList.remove('has-error');
 
